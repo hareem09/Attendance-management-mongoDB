@@ -7,7 +7,7 @@ const Port=3000
 app.get('/',(req,res)=>{
     res.send('Hello World')
 })
-
+// Marking attendance
 app.post('/attendance',async(req,res)=>{
    try{
     let statusStudent=await statusModel.create(req.body)
@@ -18,7 +18,7 @@ app.post('/attendance',async(req,res)=>{
     res.send({message:err.message})
    }
 })
-
+//Reading all attendance
 app.get('/attendance',async(req,res)=>{
     try{
         let statusStudents=await statusModel.find()
@@ -28,7 +28,7 @@ app.get('/attendance',async(req,res)=>{
         res.send({message:err.message})
        }
 })
-
+//Viewing by id
 app.get('/attendance/:id',async(req,res)=>{
     try{
         let statusStudent=await statusModel.findById(req.params.id)
@@ -38,7 +38,7 @@ app.get('/attendance/:id',async(req,res)=>{
         res.send({message:err.message})
        }
 })
-
+//Viewing by date
 app.get('/attendance/:date',async(req,res)=>{
     try{
         let statusStudent=await statusModel.findById(req.params.date)
@@ -48,7 +48,7 @@ app.get('/attendance/:date',async(req,res)=>{
         res.send({message:err.message})
        }
 })
-
+//Update by id
 app.put('/updateattendance/:id',async(req,res)=>{
         try{
             let statusStudent=await statusModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
@@ -59,6 +59,8 @@ app.put('/updateattendance/:id',async(req,res)=>{
             res.send({message:err.message})
            }
 })
+
+//Deleting using id
 app.delete('/attendance/:id',async(req,res)=>{
     try{
         let statusStudent=await statusModel.findByIdAndDelete(req.params.id)
