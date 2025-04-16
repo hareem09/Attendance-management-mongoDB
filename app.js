@@ -39,9 +39,9 @@ app.get('/attendance/:id',async(req,res)=>{
        }
 })
 //Viewing by date
-app.get('/attendance/:date',async(req,res)=>{
+app.get('/attendance/date/:date',async(req,res)=>{
     try{
-        let statusStudent=await statusModel.findById(req.params.date)
+        let statusStudent=await statusModel.findOne(req.params.date)
         res.json(statusStudent)
        }
        catch(err){
