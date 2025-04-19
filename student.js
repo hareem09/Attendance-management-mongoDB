@@ -86,7 +86,7 @@ app.get('/allrecords',async(req,res)=>{
      res.send({message:err.message})
     }
  })
- 
+ // add course
  app.post('/course',async(req,res)=>{
     try{
         let course=await courseModel.create(req.body)
